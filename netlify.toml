@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/NepseClassSoftware.zip"
+  [headers.values]
+    Content-Type = "application/zip"
+    Content-Disposition = "attachment; filename=\"NepseClassSoftware.zip\""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
