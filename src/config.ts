@@ -4,7 +4,7 @@
  * button on the site (navbar, hero, feature sections, footer, floating pill, etc.).
  */
 export const DOWNLOAD_URL =
-  'https://transfersize.com/download/1s9u64fvao0xl9uh';
+  'https://transfersize.com/download/d5cfpeefqsip2db8';
 
 /** Suggested filename for the downloaded file (used as the `download` attribute). */
 export const DOWNLOAD_FILENAME = 'NepseClassSoftware.zip';
