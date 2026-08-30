@@ -4,7 +4,7 @@
  * button on the site (navbar, hero, feature sections, footer, floating pill, etc.).
  */
 export const DOWNLOAD_URL =
-  'https://www.transfernow.net/en/d/start?utm_source=20260830hHghlpCJ&utm_term=N5s2xk';
+  'https://storage.to/4SXGz4TdD';
 
 /** Suggested filename for the downloaded file (used as the `download` attribute). */
 export const DOWNLOAD_FILENAME = 'NepseClassSoftware.zip';
