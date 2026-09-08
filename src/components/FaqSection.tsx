@@ -1,109 +1,59 @@
-import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, Sparkles, MessageCircle } from 'lucide-react';
-import { FAQS } from '../data/mockData';
+import React from 'react';
+import { Plus } from 'lucide-react';
 
 interface FaqSectionProps {
-  onOpenDownload: () => void;
+  onOpenDownload?: () => void;
 }
 
-export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDownload }) => {
-  const [openId, setOpenId] = useState<string>('faq-1');
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+const faqs = [
+  {
+    question: 'Where can I access the software features?',
+    answer: 'Live classes, copy trading, buy/sell signals, and paper trading are accessed in the Karnali Technology software after download. This website introduces those features; it does not offer browser-based trading demos.',
+  },
+  {
+    question: 'Which operating systems are supported?',
+    answer: 'The software is designed for Windows 10 and Windows 11. Use a compatible Windows computer to access the desktop features.',
+  },
+  {
+    question: 'Does copy trading guarantee a return?',
+    answer: 'No. Copy trading and buy/sell signals do not guarantee profits or prevent losses. Markets involve risk, and past performance is not a reliable indicator of future results. Make your own informed decisions.',
+  },
+  {
+    question: 'Can I trade directly on this website?',
+    answer: 'No. This is the Karnali Technology software information and download website, not a trading platform. The software features are available after download, not on this page.',
+  },
+  {
+    question: 'What happens when I select Download?',
+    answer: 'Download opens the external software download page in a new tab. The download is provided there rather than through an in-page trading platform or demo.',
+  },
+];
 
-  const categories = ['All', 'Trial & Pricing', 'Signals & Strategy', 'Live Classes', 'Copy Trading', 'Technical / Installation'];
-
-  const filteredFaqs = selectedCategory === 'All'
-    ? FAQS
-    : FAQS.filter(f => f.category === selectedCategory);
-
-  const toggleFaq = (id: string) => {
-    setOpenId(openId === id ? '' : id);
-  };
-
+export const FaqSection: React.FC<FaqSectionProps> = () => {
   return (
-    <section id="faq" className="py-24 bg-slate-50 relative border-t border-slate-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center space-x-3">
-            <span className="h-[1px] w-6 bg-emerald-500"></span>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-emerald-600">
-              CLARIFICATIONS
-            </span>
-            <span className="h-[1px] w-6 bg-emerald-500"></span>
+    <section id="faq" className="faq-section" aria-labelledby="faq-heading">
+      <div className="container">
+        <div className="faq-layout">
+          {/* Header */}
+          <div className="section-heading">
+            <span className="eyebrow">A little clarity</span>
+            <h2 id="faq-heading">Good questions.<br />Clear answers.</h2>
+            <p className="section-description">What to know about Karnali Technology before you download.</p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 tracking-tight leading-tight">
-            Frequently Asked <span className="italic font-serif text-emerald-600 font-normal">Questions</span>
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-light">
-            Everything you need to know about our 15-day free trial, software installation, and live signals.
-          </p>
-        </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono transition-all ${
-                selectedCategory === cat
-                  ? 'bg-emerald-500 text-black font-bold uppercase tracking-wider'
-                  : 'bg-white text-slate-500 hover:text-slate-900 border border-slate-200'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Accordion List */}
-        <div className="space-y-3">
-          {filteredFaqs.map((faq) => {
-            const isOpen = openId === faq.id;
-            return (
-              <div
-                key={faq.id}
-                className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all shadow-lg"
-              >
-                <button
-                  onClick={() => toggleFaq(faq.id)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors"
-                >
-                  <span className="text-sm sm:text-base font-serif font-bold text-slate-900 flex items-center gap-3">
-                    <span className="text-emerald-600 text-xs font-mono uppercase tracking-wider">{faq.category.split(' ')[0]}</span>
-                    <span>{faq.question}</span>
-                  </span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-emerald-600' : ''
-                    }`}
-                  />
-                </button>
-
-                {isOpen && (
-                  <div className="px-5 pb-6 sm:px-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-4 bg-slate-50 font-light">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Still have questions */}
-        <div className="mt-14 text-center p-8 bg-white rounded-3xl border border-slate-200 max-w-lg mx-auto flex flex-col items-center space-y-4 shadow-xl">
-          <MessageCircle className="w-8 h-8 text-emerald-600" />
-          <h4 className="text-base font-serif font-bold text-slate-900">Have a specific question about your Broker TMS?</h4>
-          <p className="text-xs text-slate-500 font-light">
-            Our Kathmandu support desk is available Sunday–Thursday (10:00 AM – 6:00 PM NPT).
-          </p>
-          <button
-            onClick={onOpenDownload}
-            className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-wider font-mono rounded-full transition-all"
-          >
-            Download Expert NEPSE Free
-          </button>
+          {/* Category Pills */}
+          {/* Accordion List */}
+          <div className="faq-list">
+            {faqs.map((faq) => (
+              <details className="faq-item" key={faq.question}>
+                <summary>
+                  <span>{faq.question}</span>
+                  <Plus size={20} aria-hidden="true" />
+                </summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          {/* Still have questions */}
         </div>
       </div>
     </section>

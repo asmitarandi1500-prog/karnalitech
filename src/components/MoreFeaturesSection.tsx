@@ -1,142 +1,59 @@
-import React from 'react';
-import { 
-  Building2, 
-  Layers, 
-  Coins, 
-  Workflow, 
-  CalendarDays, 
-  Cpu, 
-  Sparkles, 
-  ShieldAlert, 
-  PieChart, 
-  Zap,
-  ArrowRight
-} from 'lucide-react';
+import { ArrowUpRight, BellRing, BookOpen, ChartNoAxesCombined, Check, Compass, GraduationCap, Layers3, Monitor, Radio, Users } from 'lucide-react';
+import { DOWNLOAD_URL } from '../config';
 
-interface MoreFeaturesSectionProps {
-  onOpenDownload: () => void;
-}
+const features = [
+  { number: '01', icon: GraduationCap, title: 'Live classes. Real understanding.', description: 'Build your market knowledge with guided sessions on trading concepts, chart reading, and the Nepal stock market.', tag: 'LEARN', className: 'feature-card-learning', detail: 'Learn the why behind every decision.' },
+  { number: '02', icon: Users, title: 'Explore copy trading', description: 'Discover trading approaches and explore copy trading tools inside the software. Review strategies and risks before making your own decisions.', tag: 'CONNECT', className: '', detail: 'A different perspective on the market.' },
+  { number: '03', icon: Radio, title: 'Signals, not the noise', description: 'Find buy and sell signals together with market context, so you can research potential opportunities in your desktop workspace.', tag: 'DISCOVER', className: '', detail: 'Information to support your research.' },
+  { number: '04', icon: Compass, title: 'Practice with purpose', description: 'Explore paper trading in the app. Test ideas with virtual funds and build familiarity before considering real-money trades.', tag: 'PRACTICE', className: '', detail: 'Space to learn at your own pace.' },
+  { number: '05', icon: ChartNoAxesCombined, title: 'See the bigger picture', description: 'Bring market analysis, broker activity, and sector insights into one place instead of switching between scattered sources.', tag: 'UNDERSTAND', className: '', detail: 'More context. A clearer perspective.' },
+  { number: '06', icon: BellRing, title: 'Keep what matters close', description: 'Explore watchlists, market alerts, and dividend tracking tools designed to help you follow the companies that interest you.', tag: 'FOLLOW', className: 'feature-card-follow', detail: 'Your market interests, organized.' },
+];
 
-export const MoreFeaturesSection: React.FC<MoreFeaturesSectionProps> = ({ 
-  onOpenDownload 
-}) => {
-  const extraFeatures = [
-    {
-      icon: Building2,
-      tag: 'Broker Tracker',
-      title: 'Top 58 Broker Flow & Accumulation Intelligence',
-      description: 'Track exactly which brokers (Broker 58, 45, 34, 49) are quietly accumulating shares before breakout. Discover who is buying, who is selling, and average buying rates in real time.',
-      color: 'from-emerald-500/20 to-teal-500/10',
-      border: 'hover:border-emerald-400',
-    },
-    {
-      icon: Workflow,
-      tag: 'TMS Automation',
-      title: 'Direct TMS Webhook & 1-Click Order Dispatch',
-      description: 'Zero manual typing errors. Connect our software webhook with your NEPSE TMS login (Brokers 1 through 58) to execute pre-configured bracket orders and trailing stop-losses instantly.',
-      color: 'from-blue-500/20 to-indigo-500/10',
-      border: 'hover:border-blue-500/50',
-    },
-    {
-      icon: Coins,
-      tag: 'Dividends & Rights',
-      title: 'Bonus Share, Right Share & Book Closure Tracker',
-      description: 'Stay ahead of AGM declarations. Automated dividend yield calculators, historical payout ratios, and instant calendar alerts for book closures in Bikram Sambat (BS) & AD.',
-      color: 'from-amber-500/20 to-yellow-500/10',
-      border: 'hover:border-amber-500/50',
-    },
-    {
-      icon: PieChart,
-      tag: 'Sector Heatmap',
-      title: 'Live NEPSE Sector Rotation Matrix',
-      description: 'Visualize where institutional money is flowing in seconds: Hydropower super-cycle, Commercial Banks value surge, Microfinance, Life Insurance, or Manufacturing & Hotels.',
-      color: 'from-purple-500/20 to-pink-500/10',
-      border: 'hover:border-purple-500/50',
-    },
-    {
-      icon: Cpu,
-      tag: 'AI Liquidity Gauge',
-      title: 'NRB Monetary Policy & Interbank Rate Impact',
-      description: 'Macro analytics built for Nepal. Track CD ratio fluctuations, banking liquidity surplus, remittance inflows, and interest rate cycle forecasts correlated directly with NEPSE index moves.',
-      color: 'from-cyan-500/20 to-teal-500/10',
-      border: 'hover:border-cyan-500/50',
-    },
-    {
-      icon: ShieldAlert,
-      tag: 'Circuit Sentinel',
-      title: '+10% & -10% Upper/Lower Circuit Prediction Bot',
-      description: 'Detect impending circuit locks 5 to 15 minutes before they happen by analyzing order book velocity, pending ask ratios, and block transaction clusters on the floor sheet.',
-      color: 'from-rose-500/20 to-orange-500/10',
-      border: 'hover:border-rose-500/50',
-    },
-  ];
-
-  return (
-    <section id="features" className="py-24 bg-slate-50 relative border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+export const MoreFeaturesSection = () => (
+  <>
+    <section id="features" className="features-section">
+      <div className="container">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center space-x-3">
-            <span className="h-[1px] w-6 bg-emerald-500"></span>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-emerald-600">
-              COMPLETE ECOSYSTEM
-            </span>
-            <span className="h-[1px] w-6 bg-emerald-500"></span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 tracking-tight leading-tight">
-            Engineered Exclusively for the <br />
-            <span className="italic font-serif text-emerald-600 font-normal">
-              Nepal Stock Exchange
-            </span>
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
-            Generic international trading platforms don't understand NEPSE's 58-broker floor sheet, T+2 settlement, 
-            or circuit dynamics. Expert NEPSE is tailored from the ground up for Nepali investors.
-          </p>
+        <div className="section-heading section-heading-split">
+          <div><span className="eyebrow">THE SOFTWARE, SIMPLIFIED</span><h2>Everything you need.<br /><span>One place to begin.</span></h2></div>
+          <p className="section-description">Less switching. More understanding. Discover the tools waiting for you inside Karnali Technology.</p>
         </div>
-
+        <div className="section-note"><Monitor size={15} aria-hidden="true" />All features are available inside the downloaded software—not on this website.</div>
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {extraFeatures.map((feat, idx) => {
-            const Icon = feat.icon;
-            return (
-              <div
-                key={idx}
-                className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 transition-all duration-300 flex flex-col justify-between group shadow-xl"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-emerald-600 group-hover:border-emerald-300 transition-colors">
-                      <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-emerald-600 uppercase tracking-wider bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200">
-                      {feat.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
-                    {feat.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-500 leading-relaxed font-light">
-                    {feat.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-6 border-t border-slate-200 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-mono text-[11px]">Included in Download</span>
-                  <button
-                    onClick={onOpenDownload}
-                    className="text-emerald-600 hover:text-emerald-700 font-mono text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform uppercase tracking-wider"
-                  >
-                    Get Feature <ArrowRight className="w-3 h-3" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+        <div className="feature-grid">
+          {features.map(({ number, icon: Icon, title, description, tag, className, detail }) => (
+            <article className={`feature-card ${className}`} key={number}>
+              <div className="feature-card-top"><span className="feature-icon"><Icon size={24} strokeWidth={1.6} aria-hidden="true" /></span><span className="feature-number">/{number}</span></div>
+              <span className="feature-tag">{tag}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+              <div className="feature-detail"><span>{detail}</span><ArrowUpRight size={17} aria-hidden="true" /></div>
+            </article>
+          ))}
+        </div>
+        <div className="features-bottom"><span><Layers3 size={18} aria-hidden="true" />Your complete toolkit lives in the app.</span><a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="text-link">Download <ArrowUpRight size={17} aria-hidden="true" /></a></div>
+      </div>
+    </section>
+    <section id="why-karnali" className="why-section">
+      <div className="container why-layout">
+        <div className="why-visual" aria-hidden="true">
+          <span className="why-visual-label">A MORE CONNECTED WORKFLOW</span>
+          <div className="workflow-row"><span className="workflow-icon"><BookOpen size={24} /></span><div><small>01 / BUILD A FOUNDATION</small><strong>Learn something new.</strong></div><Check size={18} /></div>
+          <div className="workflow-connector" />
+          <div className="workflow-row"><span className="workflow-icon"><ChartNoAxesCombined size={24} /></span><div><small>02 / FIND YOUR PERSPECTIVE</small><strong>Understand the market.</strong></div><Check size={18} /></div>
+          <div className="workflow-connector" />
+          <div className="workflow-row"><span className="workflow-icon"><Compass size={24} /></span><div><small>03 / EXPLORE YOUR APPROACH</small><strong>Put ideas into practice.</strong></div><Check size={18} /></div>
+          <div className="workflow-caption"><span className="art-dot" /> Connected in Karnali Technology</div>
+        </div>
+        <div className="why-content section-heading">
+          <span className="eyebrow">BUILT AROUND YOU</span>
+          <h2>Your market.<br />Your pace.<br /><span>Your tech partner.</span></h2>
+          <p className="section-description">Whether you're taking your first steps or refining your approach, bring learning and market exploration into a single, focused workspace.</p>
+          <ul className="benefit-list"><li><Check size={17} aria-hidden="true" />Focused on Nepal's stock market</li><li><Check size={17} aria-hidden="true" />Learning and analysis, together</li><li><Check size={17} aria-hidden="true" />A dedicated Windows desktop experience</li></ul>
+          <a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="button button-navy">Download <ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
       </div>
     </section>
-  );
-};
+  </>
+);
